@@ -1,0 +1,78 @@
+/* ==========================================================================
+   VARIABLES.CSS
+   Identidade visual centralizada — editar cores e tipografia aqui,
+   toda a página reage automaticamente.
+   ========================================================================== */
+
+:root {
+  /* ---- Paleta rosé (do mais claro ao mais profundo) ---- */
+  --color-bg-porcelain: #FFF8F7;   /* fundo principal, quase branco rosado */
+  --color-blush-light:  #F7E8EC;   /* seções alternadas, fundos suaves */
+  --color-blush:        #F4D7DF;   /* superfícies, cards */
+  --color-rose-soft:    #E8B8C8;   /* acentos leves, bordas */
+  --color-rose:         #D890A8;   /* elementos ativos, ícones */
+  --color-rose-deep:    #C77994;   /* botões, hovers, destaques */
+  --color-mauve:        #B76584;   /* texto sobre rosé, contraste */
+  --color-gold:         #D4A373;   /* detalhes dourados — linhas, ícones, hover */
+  --color-white:        #FFFDFB;   /* branco puro levemente quente */
+  --color-ink:          #5A3D3B;   /* texto principal, marrom acastanhado */
+
+  /* ---- Tons funcionais derivados ---- */
+  --color-ink-soft: #8A6B68;       /* texto secundário */
+  --color-overlay-dark: rgba(90, 61, 59, 0.45);   /* overlay sobre imagens no hero */
+  --color-overlay-light: rgba(255, 253, 251, 0.86); /* header com blur */
+  --color-border-hairline: rgba(212, 163, 115, 0.35); /* linhas douradas discretas */
+
+  /* ---- Tipografia ---- */
+  --font-display: 'Cormorant Garamond', serif;   /* títulos principais */
+  --font-subtitle: 'Playfair Display', serif;    /* subtítulos, citações */
+  --font-body: 'Lato', sans-serif;               /* textos correntes */
+
+  --fs-hero: clamp(2.8rem, 6vw, 5.5rem);
+  --fs-h1: clamp(2.2rem, 4.2vw, 3.6rem);
+  --fs-h2: clamp(1.8rem, 3vw, 2.6rem);
+  --fs-h3: clamp(1.3rem, 2vw, 1.7rem);
+  --fs-subtitle: clamp(1.1rem, 1.6vw, 1.4rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.78rem;
+
+  --lh-tight: 1.15;
+  --lh-normal: 1.6;
+  --lh-loose: 1.9;
+
+  --ls-eyebrow: 0.24em;
+  --ls-wide: 0.06em;
+
+  /* ---- Espaçamento (escala editorial, generosa) ---- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+  --space-3xl: 11rem;
+
+  --container-max: 1240px;
+  --container-narrow: 760px;
+
+  /* ---- Bordas e sombras (sempre muito suaves) ---- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-full: 999px;
+
+  --shadow-whisper: 0 1px 2px rgba(90, 61, 59, 0.04);
+  --shadow-soft: 0 12px 40px rgba(90, 61, 59, 0.08);
+  --shadow-lifted: 0 24px 60px rgba(90, 61, 59, 0.14);
+
+  /* ---- Transições ---- */
+  --ease-refined: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.3s;
+  --dur-medium: 0.6s;
+  --dur-slow: 1s;
+
+  /* ---- Z-index ---- */
+  --z-header: 100;
+  --z-lightbox: 200;
+  --z-menu: 150;
+}
