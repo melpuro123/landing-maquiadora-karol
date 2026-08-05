@@ -1,0 +1,93 @@
+/* ==========================================================================
+   HERO.CSS
+   Mídia de fundo (vídeo / imagem), overlay e posicionamento do conteúdo.
+   Separado do layout geral — editar apenas para ajustes visuais da Hero.
+   ========================================================================== */
+
+/* ---------- Container da seção ---------- */
+.hero {
+  height: 100vh;
+  min-height: 620px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+/* ---------- Vídeo de fundo ---------- */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+.hero-video[hidden] {
+  display: none;
+}
+
+/* ---------- Imagem de fallback / modo estático ---------- */
+.hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+.hero-image[hidden] {
+  display: none;
+}
+
+/* ---------- Overlay escuro — legibilidade do conteúdo ---------- */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.28) 45%,
+    rgba(0, 0, 0, 0.48) 100%
+  );
+}
+
+/* ---------- Conteúdo sobre a mídia ---------- */
+.hero > .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: var(--space-2xl);
+  max-width: 780px;
+}
+
+.hero-content h1 {
+  font-size: var(--fs-hero);
+  color: var(--color-white);
+  max-width: 14ch;
+}
+
+.hero-content p {
+  font-family: var(--font-subtitle);
+  font-style: italic;
+  font-size: var(--fs-subtitle);
+  color: var(--color-white-92);
+  margin-top: var(--space-md);
+  max-width: 46ch;
+}

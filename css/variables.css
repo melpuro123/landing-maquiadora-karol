@@ -1,32 +1,71 @@
 /* ==========================================================================
    VARIABLES.CSS
-   Identidade visual centralizada — editar cores e tipografia aqui,
-   toda a página reage automaticamente.
+   Identidade visual centralizada — paleta fashionista (rosa principal).
+   Editar cores aqui; toda a página reage automaticamente.
    ========================================================================== */
 
 :root {
-  /* ---- Paleta rosé (do mais claro ao mais profundo) ---- */
-  --color-bg-porcelain: #FFF8F7;   /* fundo principal, quase branco rosado */
-  --color-blush-light:  #F7E8EC;   /* seções alternadas, fundos suaves */
-  --color-blush:        #F4D7DF;   /* superfícies, cards */
-  --color-rose-soft:    #E8B8C8;   /* acentos leves, bordas */
-  --color-rose:         #D890A8;   /* elementos ativos, ícones */
-  --color-rose-deep:    #C77994;   /* botões, hovers, destaques */
-  --color-mauve:        #B76584;   /* texto sobre rosé, contraste */
-  --color-gold:         #D4A373;   /* detalhes dourados — linhas, ícones, hover */
-  --color-white:        #FFFDFB;   /* branco puro levemente quente */
-  --color-ink:          #5A3D3B;   /* texto principal, marrom acastanhado */
+  /* ---- Nova paleta fashionista ---- */
+  --primary:       #E58FB2;
+  --primary-dark:  #D8749E;
+  --primary-light: #F6D9E6;
+  --background:    #FDF8FA;
+  --white:         #FFFFFF;
+  --text:          #4A3A42;
+  --text-light:    #8C7680;
+  --border:        #F1CDD9;
+  --hover:         #C95D8C;
+  --accent:        #EAA8C2;
+  --shadow:        rgba(229, 143, 178, 0.18);
+
+  /* Dourado — apenas detalhes (eyebrow, divisores, ícones, hovers sutis) */
+  --color-gold: #D4A373;
+
+  /* ---- Compatibilidade retroativa (nomes legados → nova paleta) ---- */
+  --color-bg-porcelain: var(--background);
+  --color-blush-light:  var(--primary-light);
+  --color-blush:        var(--primary-light);
+  --color-rose-soft:    var(--accent);
+  --color-rose:         var(--primary);
+  --color-rose-deep:    var(--primary-dark);
+  --color-mauve:        var(--hover);
+  --color-white:        var(--white);
+  --color-ink:          var(--text);
+  --color-ink-soft:     var(--text-light);
 
   /* ---- Tons funcionais derivados ---- */
-  --color-ink-soft: #8A6B68;       /* texto secundário */
-  --color-overlay-dark: rgba(90, 61, 59, 0.45);   /* overlay sobre imagens no hero */
-  --color-overlay-light: rgba(255, 253, 251, 0.86); /* header com blur */
-  --color-border-hairline: rgba(212, 163, 115, 0.35); /* linhas douradas discretas */
+  --color-overlay-dark:  rgba(74, 58, 66, 0.45);
+  --color-overlay-light: rgba(253, 248, 250, 0.86);
+  --color-border-hairline: rgba(241, 205, 217, 0.65);
+
+  /* ---- Transparências sobre fundo escuro (hero, lightbox) ---- */
+  --color-white-92: rgba(255, 255, 255, 0.92);
+  --color-white-75: rgba(255, 255, 255, 0.75);
+  --color-white-70: rgba(255, 255, 255, 0.70);
+  --color-white-55: rgba(255, 255, 255, 0.55);
+  --color-white-50: rgba(255, 255, 255, 0.50);
+  --color-white-40: rgba(255, 255, 255, 0.40);
+  --color-white-30: rgba(255, 255, 255, 0.30);
+  --color-white-25: rgba(255, 255, 255, 0.25);
+  --color-white-14: rgba(255, 255, 255, 0.14);
+  --color-white-08: rgba(255, 255, 255, 0.08);
+  --color-white-06: rgba(255, 255, 255, 0.06);
+
+  --color-ink-92: rgba(74, 58, 66, 0.92);
+  --color-ink-62: rgba(74, 58, 66, 0.62);
+  --color-ink-35: rgba(74, 58, 66, 0.35);
+  --color-ink-28: rgba(74, 58, 66, 0.28);
+  --color-ink-18: rgba(74, 58, 66, 0.18);
+
+  /* ---- Transparências sobre fundo claro (footer) ---- */
+  --color-blush-85: rgba(246, 217, 230, 0.85);
+  --color-blush-70: rgba(246, 217, 230, 0.70);
+  --color-blush-55: rgba(246, 217, 230, 0.55);
 
   /* ---- Tipografia ---- */
-  --font-display: 'Cormorant Garamond', serif;   /* títulos principais */
-  --font-subtitle: 'Playfair Display', serif;    /* subtítulos, citações */
-  --font-body: 'Lato', sans-serif;               /* textos correntes */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-subtitle: 'Playfair Display', serif;
+  --font-body: 'Lato', sans-serif;
 
   --fs-hero: clamp(2.8rem, 6vw, 5.5rem);
   --fs-h1: clamp(2.2rem, 4.2vw, 3.6rem);
@@ -36,6 +75,12 @@
   --fs-body: 1rem;
   --fs-small: 0.875rem;
   --fs-eyebrow: 0.78rem;
+  --fs-card: 0.94rem;
+  --fs-benefit: 0.85rem;
+  --fs-step: 0.9rem;
+  --fs-footer: 0.92rem;
+  --fs-footer-small: 0.8rem;
+  --fs-nav-mobile: 1.05rem;
 
   --lh-tight: 1.15;
   --lh-normal: 1.6;
@@ -43,6 +88,7 @@
 
   --ls-eyebrow: 0.24em;
   --ls-wide: 0.06em;
+  --ls-stars: 0.2em;
 
   /* ---- Espaçamento (escala editorial, generosa) ---- */
   --space-xs: 0.5rem;
@@ -56,14 +102,19 @@
   --container-max: 1240px;
   --container-narrow: 760px;
 
-  /* ---- Bordas e sombras (sempre muito suaves) ---- */
+  /* ---- Header ---- */
+  --header-padding: 1.6rem;
+  --header-padding-scrolled: 1rem;
+
+  /* ---- Bordas e sombras ---- */
   --radius-sm: 2px;
   --radius-md: 4px;
+  --radius-lg: 16px;
   --radius-full: 999px;
 
-  --shadow-whisper: 0 1px 2px rgba(90, 61, 59, 0.04);
-  --shadow-soft: 0 12px 40px rgba(90, 61, 59, 0.08);
-  --shadow-lifted: 0 24px 60px rgba(90, 61, 59, 0.14);
+  --shadow-whisper: 0 1px 2px var(--shadow);
+  --shadow-soft: 0 12px 40px var(--shadow);
+  --shadow-lifted: 0 24px 60px rgba(229, 143, 178, 0.28);
 
   /* ---- Transições ---- */
   --ease-refined: cubic-bezier(0.22, 1, 0.36, 1);
@@ -71,8 +122,37 @@
   --dur-medium: 0.6s;
   --dur-slow: 1s;
 
+  /* ---- Animações ---- */
+  --anim-reveal: 0.9s;
+  --anim-stagger: 90ms;
+  --anim-hero-zoom: 1.6s;
+  --anim-hero-rise: 1s;
+  --anim-scroll-line: 2.2s;
+  --anim-marquee: 40s;
+
   /* ---- Z-index ---- */
+  --z-back-to-top: 80;
+  --z-whatsapp: 90;
   --z-header: 100;
-  --z-lightbox: 200;
   --z-menu: 150;
+  --z-lightbox: 200;
+  --z-gallery-lightbox: 210;
+
+  /* ---- Componentes ---- */
+  --size-icon-sm: 16px;
+  --size-icon-md: 24px;
+  --size-avatar: 64px;
+  --size-step-index: 44px;
+  --size-lightbox-btn: 44px;
+  --size-whatsapp-float: 56px;
+  --size-back-to-top: 48px;
+  --size-social: 38px;
+  --size-dot: 7px;
+  --size-gold-dot: 4px;
+  --size-eyebrow-line: 28px;
+  --size-divider: 60px;
+  --size-scroll-line: 50px;
+  --size-sobre-frame: 18px;
+  --size-cta-circle-lg: 340px;
+  --size-cta-circle-sm: 220px;
 }

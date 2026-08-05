@@ -1,34 +1,27 @@
 /* ==========================================================================
    WHATSAPP.JS
-   Configuração central do WhatsApp. Edite apenas os valores abaixo —
-   todos os botões da página (hero, CTA, rodapé, botão flutuante) usam
-   esta mesma configuração automaticamente.
+   Constrói e aplica links do WhatsApp a partir de config.js.
    ========================================================================== */
 
-const WHATSAPP_CONFIG = {
-  // Número no formato internacional, apenas dígitos (com DDI 55 + DDD + número)
-  numero: '5500000000000',
-
-  // Mensagem padrão enviada automaticamente ao clicar em qualquer botão de WhatsApp
-  mensagem: 'Olá! Vi seu site e gostaria de agendar um horário para maquiagem.',
-};
-
 function montarLinkWhatsapp() {
-  const texto = encodeURIComponent(WHATSAPP_CONFIG.mensagem);
-  return `https://wa.me/${WHATSAPP_CONFIG.numero}?text=${texto}`;
+  const { phone, whatsapp } = SITE_CONFIG;
+  const texto = encodeURIComponent(whatsapp.message);
+  return `https://wa.me/${phone.whatsapp}?text=${texto}`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const link = montarLinkWhatsapp();
-  const alvos = [
-    'whatsappHero',
-    'whatsappCta',
-    'whatsappFooter',
-    'whatsappFloat',
-  ];
 
-  alvos.forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.setAttribute('href', link);
+  document.querySelectorAll('[data-whatsapp]').forEach((el) => {
+    el.setAttribute('href', link);
+  });
+
+  /* Botões sem ícone de link externo — abre WhatsApp no clique */
+  document.querySelectorAll('[data-whatsapp-silent]').forEach((el) => {
+    el.setAttribute('href', '#');
+    el.addEventListener('click', (evento) => {
+      evento.preventDefault();
+      window.open(link, '_blank', 'noopener,noreferrer');
+    });
   });
 });

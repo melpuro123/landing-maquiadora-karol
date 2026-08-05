@@ -1,0 +1,126 @@
+/* ==========================================================================
+   PORTFOLIO.CSS
+   Portfólio premium — masonry denso, exibição estática.
+   ========================================================================== */
+
+.portfolio {
+  padding: var(--space-2xl) 0;
+  background: var(--primary-light);
+}
+
+.portfolio .container {
+  max-width: min(1200px, 94vw);
+  padding-inline: var(--space-sm);
+}
+
+/* ---- Tipografia e hierarquia ---- */
+.portfolio .section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+.portfolio .eyebrow {
+  color: #7A4A58;
+  font-weight: 700;
+}
+
+.portfolio .section-heading h2 {
+  font-size: clamp(2.6rem, 5.2vw, 3.75rem);
+  letter-spacing: 0.01em;
+}
+
+.portfolio .section-heading p {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--text-light);
+  max-width: 42ch;
+}
+
+/* ---- Masonry grid denso ---- */
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 338px;
+  grid-auto-flow: dense;
+  gap: 14px;
+  margin-top: var(--space-lg);
+  max-width: 1150px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.portfolio__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(229, 143, 178, 0.12);
+  background: var(--white);
+}
+
+.portfolio__item--tall {
+  grid-row: span 2;
+}
+
+.portfolio__item--wide {
+  grid-column: span 2;
+}
+
+.portfolio__item--harmonize img {
+  filter: saturate(0.82) sepia(0.14) hue-rotate(18deg) brightness(1.03);
+}
+
+.portfolio__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Telas grandes ---- */
+@media (min-width: 1400px) {
+  .portfolio__grid {
+    grid-auto-rows: 365px;
+    gap: 16px;
+  }
+}
+
+/* ---- Tablet ---- */
+@media (max-width: 992px) {
+  .portfolio .container {
+    max-width: min(960px, 96vw);
+  }
+
+  .portfolio__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 280px;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .portfolio__item--wide {
+    grid-column: span 2;
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 576px) {
+  .portfolio .container {
+    padding-inline: var(--space-xs);
+  }
+
+  .portfolio .section-heading h2 {
+    font-size: clamp(2.2rem, 8vw, 2.8rem);
+  }
+
+  .portfolio__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
+    gap: 12px;
+  }
+
+  .portfolio__item--wide {
+    grid-column: span 2;
+  }
+}

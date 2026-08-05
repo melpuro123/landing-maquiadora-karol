@@ -1,40 +1,65 @@
 /* ==========================================================================
    ANIMATIONS.CSS
-   Movimento discreto: reveals ao rolar a página + pequenos loops ambientes.
-   Tudo respeita prefers-reduced-motion (ver reset em style.css).
+   Todas as animações da landing page — reveals, hero e loops ambientes.
+   Respeita prefers-reduced-motion (ver reset.css).
    ========================================================================== */
 
 /* ---------- Reveal ao rolar (ativado via JS: classe .is-visible) ---------- */
 [data-reveal] {
   opacity: 0;
-  transition: opacity 0.9s var(--ease-refined), transform 0.9s var(--ease-refined);
+  transition:
+    opacity var(--anim-reveal) var(--ease-refined),
+    transform var(--anim-reveal) var(--ease-refined);
 }
 
-[data-reveal="fade"] { transform: translateY(0); }
+[data-reveal="fade"] {
+  transform: translateY(0);
+}
 
-[data-reveal="up"] { transform: translateY(28px); }
+[data-reveal="up"] {
+  transform: translateY(28px);
+}
 
-[data-reveal="zoom"] { transform: scale(0.97); }
+[data-reveal="zoom"] {
+  transform: scale(0.97);
+}
 
 [data-reveal].is-visible {
   opacity: 1;
   transform: none;
 }
 
-/* Atraso escalonado para grupos de elementos (cards, steps, diferenciais) */
-[data-reveal-group] > * { transition-delay: calc(var(--stagger, 0) * 90ms); }
+/* Atraso escalonado para grupos de elementos */
+[data-reveal-group] > * {
+  transition-delay: calc(var(--stagger, 0) * var(--anim-stagger));
+}
 
 /* ---------- Hero: entrada orquestrada no load ---------- */
-.hero__media img { animation: heroZoomOut 1.6s var(--ease-refined) forwards; }
+.hero-video,
+.hero-image {
+  animation: heroZoomOut var(--anim-hero-zoom) var(--ease-refined) forwards;
+}
+
 @keyframes heroZoomOut {
   from { transform: scale(1.12); }
   to   { transform: scale(1.06); }
 }
 
-.hero__badge   { animation: heroRise 0.9s var(--ease-refined) 0.15s both; }
-.hero__content h1 { animation: heroRise 1s var(--ease-refined) 0.3s both; }
-.hero__content p  { animation: heroRise 1s var(--ease-refined) 0.5s both; }
-.hero__actions { animation: heroRise 1s var(--ease-refined) 0.7s both; }
+.hero__badge {
+  animation: heroRise 0.9s var(--ease-refined) 0.15s both;
+}
+
+.hero-content h1 {
+  animation: heroRise var(--anim-hero-rise) var(--ease-refined) 0.3s both;
+}
+
+.hero-content p {
+  animation: heroRise var(--anim-hero-rise) var(--ease-refined) 0.5s both;
+}
+
+.hero__actions {
+  animation: heroRise var(--anim-hero-rise) var(--ease-refined) 0.7s both;
+}
 
 @keyframes heroRise {
   from { opacity: 0; transform: translateY(18px); }
@@ -48,11 +73,11 @@
   100% { top: 100%; }
 }
 
-/* ---------- Fade simples para lightbox ---------- */
-.lightbox__figure { animation: none; }
+/* ---------- Utilitário genérico de fade-in ---------- */
+.fade-in {
+  animation: fadeIn 0.8s var(--ease-refined) both;
+}
 
-/* ---------- Utilitário genérico de fade-in (usado por elementos avulsos) ---------- */
-.fade-in { animation: fadeIn 0.8s var(--ease-refined) both; }
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }

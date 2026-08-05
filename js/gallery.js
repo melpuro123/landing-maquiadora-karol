@@ -1,60 +1,55 @@
 /* ==========================================================================
    GALLERY.JS
-   Lightbox do portfólio: abre a imagem em destaque, permite navegar
-   entre fotos e fecha por clique, tecla ESC ou setas do teclado.
+   Portfólio masonry: renderiza imagens estáticas a partir de portfolio-data.js.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const itens = Array.from(document.querySelectorAll('.portfolio__item'));
-  if (!itens.length) return;
+  const grid = document.getElementById('portfolioGrid');
+  if (!grid) return;
 
-  const lightbox = document.getElementById('lightbox');
-  const imagemLightbox = document.getElementById('lightboxImage');
-  const btnFechar = document.getElementById('lightboxClose');
-  const btnAnterior = document.getElementById('lightboxPrev');
-  const btnProxima = document.getElementById('lightboxNext');
-
-  let indiceAtual = 0;
-
-  function abrirLightbox(indice) {
-    indiceAtual = indice;
-    const img = itens[indice].querySelector('img');
-    imagemLightbox.src = img.src;
-    imagemLightbox.alt = img.alt;
-    lightbox.classList.add('is-open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function fecharLightbox() {
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  function irPara(delta) {
-    indiceAtual = (indiceAtual + delta + itens.length) % itens.length;
-    abrirLightbox(indiceAtual);
-  }
-
-  itens.forEach((item, indice) => {
-    item.addEventListener('click', () => abrirLightbox(indice));
-  });
-
-  btnFechar.addEventListener('click', fecharLightbox);
-  btnAnterior.addEventListener('click', () => irPara(-1));
-  btnProxima.addEventListener('click', () => irPara(1));
-
-  // Fecha ao clicar fora da imagem
-  lightbox.addEventListener('click', (evento) => {
-    if (evento.target === lightbox) fecharLightbox();
-  });
-
-  // Navegação por teclado
-  document.addEventListener('keydown', (evento) => {
-    if (!lightbox.classList.contains('is-open')) return;
-    if (evento.key === 'Escape') fecharLightbox();
-    if (evento.key === 'ArrowLeft') irPara(-1);
-    if (evento.key === 'ArrowRight') irPara(1);
-  });
+  renderPortfolio(grid);
 });
+
+function renderPortfolio(grid) {
+  if (typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.length) return;
+
+  grid.innerHTML = '';
+
+  PORTFOLIO_DATA.forEach((item, indice) => {
+    const figure = document.createElement('figure');
+    figure.className = `portfolio__item portfolio__item--${item.size}${item.harmonize ? ' portfolio__item--harmonize' : ''}`;
+    figure.setAttribute('data-reveal', 'up');
+    figure.style.setProperty('--stagger', indice);
+    figure.setAttribute('role', 'listitem');
+
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.alt;
+    img.width = item.width;
+    img.height = item.height;
+    img.loading = 'lazy';
+    if (item.harmonize) img.setAttribute('data-harmonize', '');
+
+    figure.appendChild(img);
+    grid.appendChild(figure);
+  });
+
+  const reveals = grid.querySelectorAll('[data-reveal]');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add('is-visible');
+            observer.unobserve(entrada.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+    reveals.forEach((el) => observer.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-visible'));
+  }
+}

@@ -1,0 +1,593 @@
+/* ==========================================================================
+   RESPONSIVE.CSS
+   Responsividade da landing page — max-width ONLY.
+   Desktop (> 1200px) permanece inalterado (style.css / hero.css).
+
+   Breakpoints:
+     ≤ 1200px — tablet landscape / small desktop
+     ≤ 992px  — tablet portrait
+     ≤ 768px  — mobile landscape / large phones
+     ≤ 576px  — mobile portrait / small phones
+   ========================================================================== */
+
+
+/* ==========================================================================
+   ≤ 1200px — TABLET LANDSCAPE / SMALL DESKTOP
+   ========================================================================== */
+@media (max-width: 1200px) {
+
+  /* --- Global --- */
+  .container {
+    padding-inline: var(--space-sm);
+  }
+
+  .sobre,
+  .servicos,
+  .experiencia,
+  .portfolio,
+  .depoimentos,
+  .cta {
+    padding-block: var(--space-xl);
+  }
+
+  .footer {
+    padding-block: var(--space-xl) var(--space-md);
+  }
+
+  /* --- Header --- */
+  .header__nav {
+    gap: var(--space-md);
+  }
+
+  .header__links {
+    gap: var(--space-sm);
+  }
+
+  /* --- Sobre --- */
+  .sobre .container {
+    gap: var(--space-xl);
+  }
+
+  .sobre__figure::before {
+    top: calc(var(--size-sobre-frame) * -0.75);
+    left: calc(var(--size-sobre-frame) * -0.75);
+  }
+
+  /* --- Serviços --- */
+  .servicos__grid {
+    gap: var(--space-md);
+  }
+}
+
+
+/* ==========================================================================
+   ≤ 992px — TABLET PORTRAIT
+   ========================================================================== */
+@media (max-width: 992px) {
+
+  /* --- Global --- */
+  .section-heading {
+    margin-bottom: var(--space-md);
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+
+  .btn {
+    padding: 0.9rem 1.8rem;
+  }
+
+  /* --- Header — menu mobile --- */
+  .header__links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(78vw, 340px);
+    background: var(--color-bg-porcelain);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-2xl) var(--space-lg);
+    transform: translateX(100%);
+    transition: transform var(--dur-medium) var(--ease-refined);
+    z-index: var(--z-menu);
+    box-shadow: var(--shadow-lifted);
+  }
+
+  .header__links a {
+    color: var(--color-ink) !important;
+    font-size: var(--fs-nav-mobile);
+    padding-block: 0.65rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .header__links a::after {
+    display: none;
+  }
+
+  .header__links.is-open {
+    transform: translateX(0);
+  }
+
+  .header__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    z-index: calc(var(--z-menu) + 1);
+  }
+
+  .header__toggle span {
+    width: 22px;
+  }
+
+  .header__toggle.is-open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .header__toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__toggle.is-open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .header .btn--primary {
+    display: none;
+  }
+
+  /* --- Sobre — imagem acima do conteúdo --- */
+  .sobre .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .sobre__figure {
+    max-width: 420px;
+    margin-inline: auto;
+    order: -1;
+  }
+
+  .sobre__figure::before {
+    top: calc(var(--size-sobre-frame) * -0.5);
+    left: calc(var(--size-sobre-frame) * -0.5);
+  }
+
+  .sobre__content {
+    text-align: center;
+  }
+
+  .sobre__content > p,
+  .sobre__quote {
+    margin-inline: auto;
+  }
+
+  .sobre__quote {
+    text-align: left;
+    max-width: 52ch;
+  }
+
+  /* --- Serviços — 3 → 2 colunas --- */
+  .servicos__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  /* --- Experiência — 4 → 2 colunas, sem linha conectora --- */
+  .experiencia__steps {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+  }
+
+  .experiencia__steps::before {
+    display: none;
+  }
+
+  /* --- Footer — coluna única --- */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer__brand {
+    text-align: center;
+  }
+
+  .footer__brand p {
+    margin-inline: auto;
+  }
+
+  .footer__social {
+    justify-content: center;
+  }
+
+  .footer__grid nav,
+  .footer__grid > div {
+    text-align: center;
+  }
+
+  .footer ul {
+    align-items: center;
+  }
+}
+
+
+/* ==========================================================================
+   ≤ 768px — MOBILE LANDSCAPE / LARGE PHONES
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* --- Global --- */
+  .container {
+    padding-inline: var(--space-sm);
+  }
+
+  .sobre,
+  .servicos,
+  .experiencia,
+  .portfolio,
+  .depoimentos {
+    padding-block: var(--space-lg);
+  }
+
+  .cta {
+    padding-block: var(--space-xl);
+  }
+
+  .section-heading p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+
+  .btn {
+    padding: 0.85rem 1.6rem;
+    font-size: 0.8rem;
+  }
+
+  /* --- Header --- */
+  .header {
+    padding-block: var(--space-sm);
+  }
+
+  .header--scrolled {
+    padding-block: 0.75rem;
+  }
+
+  .header__logo {
+    font-size: 1.35rem;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+    align-items: flex-end;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero-content h1 {
+    max-width: 100%;
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+  }
+
+  .hero-content p {
+    max-width: 100%;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+
+  .hero__badge {
+    font-size: 0.7rem;
+    padding: 0.45rem 0.9rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+  }
+
+  .hero__actions .btn {
+    justify-content: center;
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-video,
+  .hero-image {
+    object-position: center 30%;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  /* --- Sobre --- */
+  .sobre__figure {
+    max-width: 360px;
+    width: fit-content;
+  }
+
+  .sobre__figure img {
+    max-height: min(55vh, 520px);
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .sobre__figure::before {
+    top: calc(var(--size-sobre-frame) * -0.35);
+    left: calc(var(--size-sobre-frame) * -0.35);
+  }
+
+  .sobre__content h2 {
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+  }
+
+  .sobre__quote {
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+    padding-left: var(--space-sm);
+  }
+
+  /* --- Experiência — 2 → 1 coluna --- */
+  .experiencia__steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    max-width: 360px;
+    margin-inline: auto;
+  }
+
+  .step {
+    padding-top: var(--space-md);
+  }
+
+  .step p {
+    max-width: 100%;
+  }
+
+  /* --- Depoimentos — grid estático WhatsApp --- */
+  .testimonials-grid {
+    gap: var(--space-sm);
+  }
+
+  /* --- CTA --- */
+  .cta h2 {
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+  }
+
+  .cta p {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+
+  .cta::before {
+    width: 240px;
+    height: 240px;
+    top: -100px;
+    left: -80px;
+  }
+
+  .cta::after {
+    width: 160px;
+    height: 160px;
+    bottom: -80px;
+    right: -40px;
+  }
+
+  /* --- Lightbox — botões menores --- */
+  .lightbox {
+    padding: var(--space-sm);
+  }
+
+  .lightbox__close,
+  .lightbox__nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox__close {
+    top: var(--space-sm);
+    right: var(--space-sm);
+  }
+
+  .lightbox__nav--prev {
+    left: var(--space-xs);
+  }
+
+  .lightbox__nav--next {
+    right: var(--space-xs);
+  }
+
+  .lightbox__figure {
+    max-width: 94vw;
+    max-height: 80vh;
+  }
+
+  .lightbox__figure img {
+    max-height: 80vh;
+  }
+
+  /* --- Footer --- */
+  .footer__bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+  }
+
+  .footer__social a {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+
+/* ==========================================================================
+   ≤ 576px — MOBILE PORTRAIT / SMALL PHONES
+   ========================================================================== */
+@media (max-width: 576px) {
+
+  /* --- Global --- */
+  .container {
+    padding-inline: 1rem;
+  }
+
+  .sobre,
+  .servicos,
+  .experiencia,
+  .portfolio,
+  .depoimentos {
+    padding-block: var(--space-md);
+  }
+
+  .cta {
+    padding-block: var(--space-lg);
+  }
+
+  .section-heading {
+    margin-bottom: var(--space-sm);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+  }
+
+  .eyebrow::before {
+    width: 20px;
+  }
+
+  /* --- Header --- */
+  .header__links {
+    width: min(85vw, 300px);
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  /* --- Hero --- */
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+  }
+
+  .hero-content {
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    line-height: 1.12;
+  }
+
+  .hero__badge {
+    letter-spacing: 0.18em;
+  }
+
+  .hero-video,
+  .hero-image {
+    object-position: center 25%;
+  }
+
+  /* --- Sobre --- */
+  .sobre__figure {
+    max-width: min(300px, 85vw);
+    width: fit-content;
+  }
+
+  .sobre__figure img {
+    max-height: min(50vh, 420px);
+  }
+
+  .sobre__figure::before {
+    display: none;
+  }
+
+  /* --- Serviços — 1 coluna --- */
+  .servicos__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .servico-card__body {
+    padding: var(--space-sm) var(--space-sm) var(--space-md);
+  }
+
+  .servico-card:hover {
+    transform: none;
+  }
+
+  /* --- Depoimentos --- */
+  .chat-body {
+    max-height: 260px;
+  }
+
+  /* --- CTA --- */
+  .cta__content {
+    padding-inline: var(--space-xs);
+  }
+
+  .cta h2 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .cta .btn--primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* --- Footer --- */
+  .footer {
+    padding-block: var(--space-lg) var(--space-sm);
+  }
+
+  .footer__grid {
+    gap: var(--space-md);
+  }
+
+  /* --- WhatsApp float — posição e tamanho --- */
+  .whatsapp-float {
+    right: var(--space-sm);
+    bottom: var(--space-sm);
+    width: 50px;
+    height: 50px;
+  }
+
+  .whatsapp-float svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* --- Back to top — evita sobreposição com WhatsApp --- */
+  .back-to-top {
+    width: 44px;
+    height: 44px;
+    right: var(--space-sm);
+    bottom: calc(var(--space-sm) + 58px);
+  }
+
+  .back-to-top svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* --- Lightbox — navegação compacta --- */
+  .lightbox__nav {
+    font-size: 1.2rem;
+  }
+
+  .lightbox__close {
+    font-size: 0.9rem;
+  }
+}
