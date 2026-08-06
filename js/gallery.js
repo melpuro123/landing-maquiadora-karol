@@ -17,7 +17,7 @@ function renderPortfolio(grid) {
 
   PORTFOLIO_DATA.forEach((item, indice) => {
     const figure = document.createElement('figure');
-    figure.className = `portfolio__item portfolio__item--${item.size}${item.harmonize ? ' portfolio__item--harmonize' : ''}`;
+    figure.className = `portfolio__item portfolio__item--${item.size}`;
     figure.setAttribute('data-reveal', 'up');
     figure.style.setProperty('--stagger', indice);
     figure.setAttribute('role', 'listitem');
@@ -28,7 +28,6 @@ function renderPortfolio(grid) {
     img.width = item.width;
     img.height = item.height;
     img.loading = 'lazy';
-    if (item.harmonize) img.setAttribute('data-harmonize', '');
 
     figure.appendChild(img);
     grid.appendChild(figure);

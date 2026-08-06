@@ -8,12 +8,16 @@
   <title>Carregando…</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
+
+  <!-- Config + SEO (antes de scripts que dependem de SITE_CONFIG) -->
+  <script src="js/config.js"></script>
+  <script src="js/seo.js"></script>
 
   <!-- Preload: poster/fallback da Hero (ajustado conforme config.js) -->
   <script>
     (function () {
+      if (typeof SITE_CONFIG === 'undefined') return;
       var h = SITE_CONFIG.hero;
       var link = document.createElement('link');
       link.rel = 'preload';
@@ -35,12 +39,8 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/testimonials.css">
   <link rel="stylesheet" href="css/portfolio.css">
 
-  <!-- Config + SEO (carregados no head para meta tags antes da renderização) -->
-  <script src="js/config.js"></script>
-  <script src="js/seo.js"></script>
 </head>
 <body>
 
@@ -60,7 +60,6 @@
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#portfolio">Portfólio</a></li>
-          <li><a href="#avaliacoes">Avaliações</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
 
@@ -81,29 +80,32 @@
     <section class="hero" id="inicio" aria-label="Apresentação">
 
       <!-- Mídia de fundo: vídeo ou imagem controlados via js/config.js + js/hero.js -->
-      <video
-        class="hero-video"
-        id="heroVideo"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        aria-hidden="true"
-        hidden
-      >
-        <source src="" type="video/mp4">
-      </video>
+      <div class="hero-media" aria-hidden="true">
+        <video
+          class="hero-video"
+          id="heroVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-hidden="true"
+          hidden
+        >
+          <source src="" type="video/mp4">
+        </video>
 
-      <img
-        class="hero-image"
-        id="heroImage"
-        alt=""
-        width="1920"
-        height="1080"
-        fetchpriority="high"
-        hidden
-      >
+        <img
+          class="hero-image"
+          id="heroImage"
+          alt=""
+          width="3024"
+          height="4032"
+          fetchpriority="high"
+          decoding="async"
+          hidden
+        >
+      </div>
 
       <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -197,7 +199,7 @@
 
           <article class="servico-card" data-reveal="up" style="--stagger:2">
             <div class="servico-card__media">
-              <img src="assets/servicos/servico-3.jpeg" alt="Atendimento personalizado com consultoria de imagem" loading="lazy" width="900" height="1200">
+              <img src="assets/servicos/servico-3.png" alt="Atendimento personalizado com consultoria de imagem" loading="lazy" width="900" height="1200">
             </div>
             <div class="servico-card__body">
               <span class="icon" aria-hidden="true">✨</span>
@@ -268,22 +270,6 @@
     </section>
 
     <!-- ============================================================
-         TESTIMONIALS
-         ============================================================ -->
-    <section class="depoimentos" id="avaliacoes" role="region" aria-labelledby="avaliacoes-titulo">
-      <div class="container">
-        <header class="section-heading section-heading--center">
-          <span class="eyebrow">Quem já viveu a experiência</span>
-          <h2 id="avaliacoes-titulo">Avaliações</h2>
-        </header>
-
-        <div class="testimonials-wrapper" id="testimonialsWrapper" role="region" aria-label="Depoimentos de clientes">
-          <div class="testimonials-grid" id="testimonialsGrid"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
          CTA
          ============================================================ -->
     <section class="cta" id="contato" aria-labelledby="cta-titulo">
@@ -323,7 +309,6 @@
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#servicos">Serviços</a></li>
             <li><a href="#portfolio">Portfólio</a></li>
-            <li><a href="#avaliacoes">Avaliações</a></li>
           </ul>
         </nav>
 
@@ -362,7 +347,5 @@
   <script src="js/animations.js" defer></script>
   <script src="js/portfolio-data.js"></script>
   <script src="js/gallery.js" defer></script>
-  <script src="js/testimonials-data.js"></script>
-  <script src="js/testimonials.js" defer></script>
 </body>
 </html>

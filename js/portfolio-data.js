@@ -2,7 +2,6 @@
    PORTFOLIO-DATA.JS
    Imagens do portfólio — adicione novos itens aqui sem alterar HTML/CSS.
    size: 'tall' | 'wide' | 'normal' (layout estilo Pinterest)
-   harmonize: true — suaviza cores dissonantes via CSS (remover após retocar a foto)
    ========================================================================== */
 
 const PORTFOLIO_DATA = [
@@ -29,19 +28,17 @@ const PORTFOLIO_DATA = [
   },
   {
     src: 'assets/portfolio/portfolio-4.jpeg',
-    alt: 'Maquiagem editorial com iluminação suave',
-    width: 2773,
-    height: 4160,
+    alt: 'Maquiagem para evento com olhos rosados e pele luminosa',
+    width: 3024,
+    height: 4032,
     size: 'tall',
   },
   {
-    /* TODO: substituir por foto retocada (blusa neutra/terracota) e remover harmonize */
     src: 'assets/portfolio/portfolio-5.jpeg',
-    alt: 'Produção social com pele luminosa',
+    alt: 'Maquiadora aplicando maquiagem com atendimento personalizado',
     width: 3024,
     height: 4032,
     size: 'normal',
-    harmonize: true,
   },
   {
     src: 'assets/portfolio/portfolio-6.jpeg',
@@ -70,5 +67,12 @@ const PORTFOLIO_DATA = [
     width: 2773,
     height: 4160,
     size: 'wide',
+  },
+  {
+    src: 'assets/portfolio/portfolio-10.jpeg',
+    alt: 'Look de festa com maquiagem delicada e brilho nos olhos',
+    width: 3024,
+    height: 4032,
+    size: 'normal',
   },
 ];

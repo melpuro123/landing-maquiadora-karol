@@ -13,43 +13,39 @@
   align-items: flex-end;
   color: var(--color-white);
   overflow: hidden;
+  background: #1a1218;
 }
 
-/* ---------- Vídeo de fundo ---------- */
-.hero-video {
+/* ---------- Mídia de fundo (cover nítido, sem upscale por scale) ---------- */
+.hero-media {
   position: absolute;
   inset: 0;
   z-index: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(1.06);
-  pointer-events: none;
+  overflow: hidden;
 }
 
-.hero-video[hidden] {
-  display: none;
-}
-
-/* ---------- Imagem de fallback / modo estático ---------- */
+.hero-video,
 .hero-image {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.06);
   pointer-events: none;
+  image-rendering: -webkit-optimize-contrast;
 }
 
+.hero-video[hidden],
 .hero-image[hidden] {
   display: none;
 }
 
-/* ---------- Overlay escuro — legibilidade do conteúdo ---------- */
+/* ---------- Overlay — contraste sem esconder detalhes da pele ---------- */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -57,9 +53,9 @@
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.18) 0%,
-    rgba(0, 0, 0, 0.28) 45%,
-    rgba(0, 0, 0, 0.48) 100%
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.18) 42%,
+    rgba(0, 0, 0, 0.38) 100%
   );
 }
 
@@ -90,4 +86,11 @@
   color: var(--color-white-92);
   margin-top: var(--space-md);
   max-width: 46ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video,
+  .hero-image {
+    animation: none;
+  }
 }

@@ -34,15 +34,15 @@
   transition-delay: calc(var(--stagger, 0) * var(--anim-stagger));
 }
 
-/* ---------- Hero: entrada orquestrada no load ---------- */
+/* ---------- Hero: entrada suave sem zoom (preserva nitidez do vídeo) ---------- */
 .hero-video,
 .hero-image {
-  animation: heroZoomOut var(--anim-hero-zoom) var(--ease-refined) forwards;
+  animation: heroMediaFade var(--anim-hero-zoom) var(--ease-refined) forwards;
 }
 
-@keyframes heroZoomOut {
-  from { transform: scale(1.12); }
-  to   { transform: scale(1.06); }
+@keyframes heroMediaFade {
+  from { opacity: 0.88; }
+  to   { opacity: 1; }
 }
 
 .hero__badge {

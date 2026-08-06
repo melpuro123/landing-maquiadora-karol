@@ -67,10 +67,6 @@
   grid-column: span 2;
 }
 
-.portfolio__item--harmonize img {
-  filter: saturate(0.82) sepia(0.14) hue-rotate(18deg) brightness(1.03);
-}
-
 .portfolio__item img {
   width: 100%;
   height: 100%;

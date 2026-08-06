@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Atualize o domínio abaixo para corresponder a SITE_CONFIG.domain em js/config.js
-Sitemap: https://www.seudominio.com.br/sitemap.xml
+Sitemap: https://landing-maquiadora-karol.vercel.app/sitemap.xml

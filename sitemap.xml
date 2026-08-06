@@ -2,7 +2,7 @@
 <!-- Atualize a URL abaixo para corresponder a SITE_CONFIG.canonicalUrl em js/config.js -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.seudominio.com.br/</loc>
+    <loc>https://landing-maquiadora-karol.vercel.app/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>

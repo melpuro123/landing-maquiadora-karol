@@ -12,8 +12,8 @@ const SITE_CONFIG = {
   tagline: 'Maquiagem social e noiva civil com delicadeza, técnica e atendimento personalizado.',
 
   /* ---- Domínio e URLs ---- */
-  domain: 'https://www.seudominio.com.br',
-  canonicalUrl: 'https://www.seudominio.com.br/',
+  domain: 'https://landing-maquiadora-karol.vercel.app',
+  canonicalUrl: 'https://landing-maquiadora-karol.vercel.app/',
 
   /* ---- SEO ---- */
   seo: {
@@ -63,7 +63,7 @@ const SITE_CONFIG = {
     type: 'BeautySalon',
     description: 'Maquiagem social e para noivas civis, com atendimento personalizado e acabamento natural.',
     priceRange: '$$',
-    image: 'assets/hero/hero.jpg',
+    image: 'assets/portfolio/portfolio-2.jpeg',
   },
 
   /* ---- Hero ---- */
@@ -72,15 +72,15 @@ const SITE_CONFIG = {
     mediaType: 'video',
 
     image: {
-      src: 'assets/hero/hero.jpg',
-      alt: 'Maquiagem social delicada, iluminação suave',
-      width: 1920,
-      height: 1080,
+      src: 'assets/portfolio/portfolio-2.jpeg',
+      alt: 'Maquiagem de noiva civil, elegante e delicada',
+      width: 3024,
+      height: 4032,
     },
 
     video: {
       src: 'assets/videos/hero.mp4',
-      poster: 'assets/hero/hero.jpg', // poster + fallback se o vídeo falhar
+      poster: 'assets/portfolio/portfolio-2.jpeg',
     },
   },
 
